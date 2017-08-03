@@ -3,7 +3,7 @@
         employee: {
             fullName: "Adam Johns",
             notes: "CROC kitchen employee",
-            departmnet: "Administration",
+            department: "Administration",
             perkCar: true,
             perkStock: false,
             perkSixWeek: true,

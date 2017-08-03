@@ -1,47 +1,62 @@
-﻿<form role="form">
-    <div class="form-group">
-        <label for="fullName" class="control-label">Name:</label>
-        <input type="text" id="fullName" name="fullName" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label for="notes" class="control-label">Notes:</label>
-        <textarea id="notes" name="notes" class="form-control" rows="5" cols="40"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="department" class="control-label">Department:</label>
-        <select id="department" name="department" class="form-control">
-            <option>Enginerring</option>
-            <option>Markerting</option>
-            <option>Finance</option>
-            <option>Adminestering</option>
-        </select>
-    </div>
+﻿<form class="form-horizontal" role="form">
+    <fieldset>
+        <legend>Basic information</legend>
+        <div class="form-group">
+            <label for="fullName" class="col-sm-3 control-label">Name:</label>
+            <div class="col-sm-9">
+                <input type="text" id="fullName" name="fullName" class="form-control" ng-model="employee.fullName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="notes" class="col-sm-3 control-label">Notes:</label>
+            <div class="col-sm-9">
+                <textarea id="notes" name="notes" class="form-control" rows="5" cols="40" ng-model="employee.notes"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="department" class="col-sm-3 control-label">Department:</label>
+            <div class="col-sm-9">
+                <select id="department" name="department" class="form-control" ng-model="employee.department"
+                        ng-options="dept for dept in departments">
+                </select>
+            </div>
+        </div>
+    </fieldset>
     <br/>
-    <span><b>Perks:</b></span>
+    <fieldset>
+        <legend>Perks</legend>
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkCar" ng-model="employee.perkCar"/> Company car</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkStock" ng-model="employee.perkStock"/> Stock options</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkSixWeeks" ng-model="employee.perkSixWeek"/> Six weeks vacation</label>
+            </div>
+        </div>
+    </fieldset>
     <br/>
-    <div class="checkbox">
-        <label><input type="checkbox" value="perkCar" class="form-control"/> Company car</label>
-    </div>
-    <div class="checkbox">
-        <label><input type="checkbox" value="perkStock" class="form-control"/> Stock options</label>
-    </div>
-    <div class="checkbox">
-        <label><input type="checkbox" value="perkSixWeeks" class="form-control"/> Six weeks vacation</label>
-    </div>
-    <br/>
-    <span><b>Payroll type:</b></span>
-    <br/>
-    <div class="radio">
-        <label><input type="radio" name="payrollType" value="w2" class="form-control"/> W-2</label>
-    </div>
-    <div class="radio">
-        <label><input type="radio" name="payrollType" value="ten99" class="form-control"/> 1099</label>
-    </div>
-    <div class="radio">
-        <label><input type="radio" name="payrollType" value="none" class="form-control"/> None</label>
-    </div>
-    <br/>
+    <fieldset>
+        <legend>Payroll type</legend>
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="w2" ng-model="employee.payrollType"/> W-2</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="ten99" ng-model="employee.payrollType"/> 1099</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="none" ng-model="employee.payrollType"/> None</label>
+            </div>
+            <br/>
 
-    <input type="submit" value="Submit" class="btn btn-primary"/>
+        </div>
+    </fieldset>
+
+    <div class="col-sm-offset-3 col-sm-9">
+        <input type="submit" value="Submit" class="btn btn-primary" ng-click="submitForm()"/> <!--Либо ng-submit на форме-->
+    </div>
 
 </form>
