@@ -1,7 +1,13 @@
 ﻿(function() {
-    var HomeController = function ($scope, $location, DataService) {
-        $scope.showCreateEmployeeForm = function () {
-            $location.path("/newEmployee");
+    var HomeController = function ($scope, $location, $uibModal, DataService) {
+        $scope.showCreateEmployeeForm = function() {
+            //$location.path("/newEmployee");
+
+            $uibModal.open({
+                templateUrl: "app/EmployeeForm/efTemplate.html",
+                controller: "efController"
+            });
+
 
         };
 

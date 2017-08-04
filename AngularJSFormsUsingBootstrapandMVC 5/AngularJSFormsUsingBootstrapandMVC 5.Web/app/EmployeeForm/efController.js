@@ -1,6 +1,6 @@
 ﻿(function() {
 
-    var efController = function ($scope, $window, $routeParams, DataService) {
+    var efController = function ($scope, $window, $routeParams, $uibModalInstance, DataService) {
 
         if ($routeParams.id)
             $scope.employee = DataService.getEmployee($routeParams.id);
@@ -30,11 +30,13 @@
 
 
             $scope.employee = angular.copy($scope.editableEmployee);
-            $window.history.back();
+            //$window.history.back();
+            $uibModalInstance.close();
         };
 
         $scope.cancelForm = function() {
-            $window.history.back();
+            //$window.history.back();
+            $uibModalInstance.dismiss();
         };
 
 

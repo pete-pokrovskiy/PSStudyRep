@@ -1,5 +1,5 @@
 ﻿(function() {
-    var app = angular.module("angularFormsApp", ["ngRoute"]);
+    var app = angular.module("angularFormsApp", ["ngRoute", "ui.bootstrap"]);
 
     app.config(function($routeProvider) {
         $routeProvider
