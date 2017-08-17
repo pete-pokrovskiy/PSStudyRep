@@ -86,6 +86,33 @@
         //******************finsih******************
 
 
+        //настройки TypeAhead-a
+        //******************start******************
+        $scope.programmingLanguages =
+        [
+            "C",
+            "C++",
+            "C#",
+            "Java",
+            "JavaScript",
+            "Scala",
+            "Perl",
+            "Python"
+        ];
+
+        //******************finsih******************
+
+        //настройки Rate-контроллла
+        //******************start******************
+        $scope.maxRate = 10;
+        $scope.hoveringOver = function(val) {
+            $scope.overStar = val;
+            $scope.percent = 100 * (val / $scope.maxRate);
+        };
+        $scope.isReadonly = false;
+        //******************finsih******************
+
+
     };
 
     var app = angular.module("angularFormsApp");
