@@ -1,14 +1,13 @@
 ﻿(function() {
     var HomeController = function ($scope, $location, $uibModal, DataService) {
         $scope.showCreateEmployeeForm = function() {
-            //$location.path("/newEmployee");
+            $location.path("/newEmployee");
 
-            $uibModal.open({
-                templateUrl: "app/EmployeeForm/efTemplate.html",
-                controller: "efController"
-            });
-
-
+            //для открытия формы с модальном окне
+            //$uibModal.open({
+            //    templateUrl: "app/EmployeeForm/efTemplate.html",
+            //    controller: "efController"
+            //});
         };
 
         $scope.showUpdateEmployeeForm = function(id) {

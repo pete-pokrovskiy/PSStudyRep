@@ -1,15 +1,19 @@
-﻿<div class="modal-header">
+﻿<!--Для модального окна-->
+<!--<div class="modal-header">
     <h1>Create employee</h1>
-</div>
+</div>-->
+<!--<div class="modal-body">
+</div>-->
+<!--<div class="modal-footer">
+</div>-->
 
-<div class="modal-body">
     <form class="form-horizontal" role="form">
         <fieldset>
             <legend>Basic information</legend>
             <div class="form-group">
                 <label for="fullName" class="col-sm-3 control-label">Name:</label>
                 <div class="col-sm-9">
-                    <input type="text" id="fullName" name="fullName" class="form-control" ng-model="editableEmployee.fullName"/>
+                    <input type="text" id="fullName" name="fullName" class="form-control" ng-model="editableEmployee.fullName" />
                 </div>
             </div>
             <div class="form-group">
@@ -25,46 +29,66 @@
                             ng-options="dept for dept in departments"></select>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Hire date:</label>
+                <div class="col-sm-9">
+                    <!--input-group - класс для групп инпутов - текстовое поле + кнопка-->
+                    <div class="input-group" style="width: 200px">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="editableEmployee.hireDate" is-open="popup1.opened"
+                               datepicker-options="dateOptions"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="control-label col-sm-3">Break time:</label>
+                <div uib-timepicker ng-model="editableEmployee.breakTime"
+                     show-seconds="timePickerIptions.showSeconds" 
+                     show-meridian="timePickerIptions.showMeridian"></div>
+            </div>
+
         </fieldset>
-        <br/>
+        <br />
         <fieldset>
             <legend>Perks</legend>
             <div class="col-sm-offset-3 col-sm-9">
                 <div class="checkbox">
-                    <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar"/> Company car</label>
+                    <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar" /> Company car</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock"/> Stock options</label>
+                    <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock" /> Stock options</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeek"/> Six weeks vacation</label>
+                    <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeek" /> Six weeks vacation</label>
                 </div>
             </div>
         </fieldset>
-        <br/>
+        <br />
         <fieldset>
             <legend>Payroll type</legend>
             <div class="col-sm-offset-3 col-sm-9">
                 <div class="radio">
-                    <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType"/> W-2</label>
+                    <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType" /> W-2</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType"/> 1099</label>
+                    <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType" /> 1099</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType"/> None</label>
+                    <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType" /> None</label>
                 </div>
-                <br/>
+                <br />
 
             </div>
         </fieldset>
     </form>
 
-</div>
 
-<div class="modal-footer">
+
+
     <div class="col-sm-offset-3 col-sm-9">
         <input type="button" value="Cancel" class="btn btn-default" ng-click="cancelForm()" />
         <input type="submit" value="Submit" class="btn btn-primary" ng-click="submitForm()" /> <!--Либо ng-submit на форме-->
     </div>
-</div>
