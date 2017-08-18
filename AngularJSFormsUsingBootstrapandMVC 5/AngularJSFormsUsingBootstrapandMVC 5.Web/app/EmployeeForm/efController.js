@@ -113,6 +113,9 @@
         //******************finsih******************
 
 
+        //показывать или нет инфу по датам
+        $scope.showDateTimeDetails = false;
+
     };
 
     var app = angular.module("angularFormsApp");

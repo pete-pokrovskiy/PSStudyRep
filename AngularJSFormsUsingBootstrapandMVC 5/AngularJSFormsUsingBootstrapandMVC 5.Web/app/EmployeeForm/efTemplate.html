@@ -7,46 +7,54 @@
 <!--<div class="modal-footer">
 </div>-->
 
-    <form class="form-horizontal" role="form">
-        <fieldset>
-            <legend>Basic information</legend>
-            <div class="form-group">
-                <label for="fullName" class="col-sm-3 control-label">Name:</label>
-                <div class="col-sm-9">
-                    <input type="text" id="fullName" name="fullName" class="form-control" ng-model="editableEmployee.fullName" />
-                </div>
+<form class="form-horizontal" role="form">
+    <fieldset>
+        <legend>Basic information</legend>
+        <div class="form-group">
+            <label for="fullName" class="col-sm-3 control-label">Name:</label>
+            <div class="col-sm-9">
+                <input type="text" id="fullName" name="fullName" class="form-control" ng-model="editableEmployee.fullName"/>
             </div>
-            <div class="form-group">
-                <label for="notes" class="col-sm-3 control-label">Notes:</label>
-                <div class="col-sm-9">
-                    <textarea id="notes" name="notes" class="form-control" rows="5" cols="40" ng-model="editableEmployee.notes"></textarea>
-                </div>
+        </div>
+        <div class="form-group">
+            <label for="notes" class="col-sm-3 control-label">Notes:</label>
+            <div class="col-sm-9">
+                <textarea id="notes" name="notes" class="form-control" rows="5" cols="40" ng-model="editableEmployee.notes"></textarea>
             </div>
-            <div class="form-group">
-                <label for="department" class="col-sm-3 control-label">Department:</label>
-                <div class="col-sm-9">
-                    <select id="department" name="department" class="form-control" ng-model="editableEmployee.department"
-                            ng-options="dept for dept in departments"></select>
-                </div>
+        </div>
+        <div class="form-group">
+            <label for="department" class="col-sm-3 control-label">Department:</label>
+            <div class="col-sm-9">
+                <select id="department" name="department" class="form-control" ng-model="editableEmployee.department"
+                        ng-options="dept for dept in departments"></select>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-3">Top programming language:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" ng-model="editableEmployee.topProgrammingLanguage"
-                           uib-typeahead="language for language in programmingLanguages | filter: $viewValue"/>
-                </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3">Top programming language:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="editableEmployee.topProgrammingLanguage"
+                       uib-typeahead="language for language in programmingLanguages | filter: $viewValue"/>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-3">Interview rating:</label>
-                <div class="col-sm-9">
-                    <span uib-rating ng-model="edatableEmployee.interviewRating" read-only="isReadonly" max="maxRate" on-hover="hoveringOver(value)" on-leave="overStar = null"></span>
-                    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar">{{percent}}%</span>
-                </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3">Interview rating:</label>
+            <div class="col-sm-9">
+                <span uib-rating ng-model="edatableEmployee.interviewRating" read-only="isReadonly" max="maxRate" on-hover="hoveringOver(value)" on-leave="overStar = null"></span>
+                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar">{{percent}}%</span>
             </div>
+        </div>
 
+        <div class="form-group">
+            <div class="checkbox col-sm-offset-3 col-sm-9">
+                <label class="control-label">
+                    <input type="checkbox" ng-model="showDateTimeDetails"/>Show datetime details?
+                </label>
+            </div>
+        </div>
 
+        <div uib-collapse="!showDateTimeDetails">
             <div class="form-group">
                 <label class="control-label col-sm-3">Hire date:</label>
                 <div class="col-sm-9">
@@ -55,8 +63,8 @@
                         <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="editableEmployee.hireDate" is-open="popup1.opened"
                                datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
                     </div>
                 </div>
             </div>
@@ -64,49 +72,66 @@
             <div class="form-group">
                 <label for="" class="control-label col-sm-3">Break time:</label>
                 <div uib-timepicker ng-model="editableEmployee.breakTime"
-                     show-seconds="timePickerIptions.showSeconds" 
+                     show-seconds="timePickerIptions.showSeconds"
                      show-meridian="timePickerIptions.showMeridian"></div>
             </div>
+        </div>
 
-        </fieldset>
-        <br />
-        <fieldset>
-            <legend>Perks</legend>
-            <div class="col-sm-offset-3 col-sm-9">
-                <div class="checkbox">
-                    <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar" /> Company car</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock" /> Stock options</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeek" /> Six weeks vacation</label>
-                </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-3">
+                <uib-accordion>
+                    <div class="panel-default"  uib-accordion-group heading="Step 1">
+                        <p>Step 1 description</p>
+                    </div>
+                    <div class="panel-default"  uib-accordion-group heading="Step 2">
+                        <p>Step 2 description</p>
+                    </div>
+                    <div class="panel-default"  uib-accordion-group heading="Step 3">
+                        <p>Step 3 description</p>
+                    </div>
+                </uib-accordion>
             </div>
-        </fieldset>
-        <br />
-        <fieldset>
-            <legend>Payroll type</legend>
-            <div class="col-sm-offset-3 col-sm-9">
-                <div class="radio">
-                    <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType" /> W-2</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType" /> 1099</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType" /> None</label>
-                </div>
-                <br />
+        </div>
 
+
+
+    </fieldset>
+    <br/>
+    <fieldset>
+        <legend>Perks</legend>
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar"/> Company car</label>
             </div>
-        </fieldset>
-    </form>
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock"/> Stock options</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeek"/> Six weeks vacation</label>
+            </div>
+        </div>
+    </fieldset>
+    <br/>
+    <fieldset>
+        <legend>Payroll type</legend>
+        <div class="col-sm-offset-3 col-sm-9">
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType"/> W-2</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType"/> 1099</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType"/> None</label>
+            </div>
+            <br/>
+
+        </div>
+    </fieldset>
+</form>
 
 
-
-
-    <div class="col-sm-offset-3 col-sm-9">
-        <input type="button" value="Cancel" class="btn btn-default" ng-click="cancelForm()" />
-        <input type="submit" value="Submit" class="btn btn-primary" ng-click="submitForm()" /> <!--Либо ng-submit на форме-->
-    </div>
+<div class="col-sm-offset-3 col-sm-9">
+    <input type="button" value="Cancel" class="btn btn-default" ng-click="cancelForm()"/>
+    <input type="submit" value="Submit" class="btn btn-primary" ng-click="submitForm()"/> <!--Либо ng-submit на форме-->
+</div>
