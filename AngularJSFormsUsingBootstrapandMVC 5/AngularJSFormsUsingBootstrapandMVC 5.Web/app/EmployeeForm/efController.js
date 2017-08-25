@@ -116,6 +116,12 @@
         //показывать или нет инфу по датам
         $scope.showDateTimeDetails = false;
 
+        $scope.shouldFullNameBeRequired = function() {
+
+            return true;
+
+        };
+
     };
 
     var app = angular.module("angularFormsApp");
